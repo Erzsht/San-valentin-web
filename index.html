@@ -11,7 +11,7 @@
             text-align: center;
             overflow: hidden;
         }
-        .portada, .mensaje {
+        .pagina {
             position: absolute;
             width: 100%;
             height: 100vh;
@@ -19,7 +19,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: opacity 1s;
+            transition: opacity 1s, transform 1s;
         }
         .portada {
             background-color: #ffebee;
@@ -29,6 +29,7 @@
             background: url('https://source.unsplash.com/1600x900/?space,stars') no-repeat center center/cover;
             color: yellow;
             opacity: 0;
+            transform: translateX(100%);
         }
         button {
             margin-top: 20px;
@@ -46,23 +47,25 @@
             display: flex;
             gap: 20px;
             opacity: 0;
-            transition: opacity 2s;
+            transition: opacity 2s ease-in-out;
         }
         .rosas img {
             width: 100px;
             height: auto;
+            transform: scale(0);
+            transition: transform 1s ease-in-out;
         }
     </style>
 </head>
 <body>
-    <div class="portada" id="portada">
+    <div class="pagina portada" id="portada">
         <h1>Hola mi amor, sé que no te esperas esto 💖</h1>
         <p>De parte de tu novio Juan José</p>
         <h2>¿QUIERES SER MI SAN VALENTÍN? ♥</h2>
         <button onclick="mostrarMensaje()">SÍ</button>
     </div>
 
-    <div class="mensaje" id="mensaje">
+    <div class="pagina mensaje" id="mensaje">
         <h2>Las flores amarillas son un reflejo de la alegría que traes a mi vida, y de las enseñanzas que has aportado desde el primer día.</h2>
         <p>Agradezco a Dios por haberte puesto en mi vida. No cabe duda que eres lo más valioso que me ha pasado en la vida, mi amor. Te amo mucho, Lilian. 💛</p>
         <div class="rosas" id="rosas">
@@ -77,9 +80,15 @@
             document.getElementById('portada').style.opacity = '0';
             setTimeout(() => {
                 document.getElementById('portada').style.display = 'none';
-                document.getElementById('mensaje').style.opacity = '1';
+                let mensaje = document.getElementById('mensaje');
+                mensaje.style.opacity = '1';
+                mensaje.style.transform = 'translateX(0)';
                 setTimeout(() => {
-                    document.getElementById('rosas').style.opacity = '1';
+                    let rosas = document.getElementById('rosas');
+                    rosas.style.opacity = '1';
+                    rosas.querySelectorAll('img').forEach((img, index) => {
+                        setTimeout(() => img.style.transform = 'scale(1)', index * 500);
+                    });
                 }, 2000);
             }, 1000);
         }
