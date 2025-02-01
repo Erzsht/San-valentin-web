@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ti, Mi Amor ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+        .portada, .mensaje {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s;
+        }
+        .portada {
+            background-color: #ffebee;
+            color: #d81b60;
+        }
+        .mensaje {
+            background: url('https://source.unsplash.com/1600x900/?space,stars') no-repeat center center/cover;
+            color: yellow;
+            opacity: 0;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.5em;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .rosas {
+            position: absolute;
+            bottom: 10%;
+            display: flex;
+            gap: 20px;
+            opacity: 0;
+            transition: opacity 2s;
+        }
+        .rosas img {
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="portada" id="portada">
+        <h1>Hola mi amor, sé que no te esperas esto 💖</h1>
+        <p>De parte de tu novio Juan José</p>
+        <h2>¿QUIERES SER MI SAN VALENTÍN? ♥</h2>
+        <button onclick="mostrarMensaje()">SÍ</button>
+    </div>
+
+    <div class="mensaje" id="mensaje">
+        <h2>Las flores amarillas son un reflejo de la alegría que traes a mi vida, y de las enseñanzas que has aportado desde el primer día.</h2>
+        <p>Agradezco a Dios por haberte puesto en mi vida. No cabe duda que eres lo más valioso que me ha pasado en la vida, mi amor. Te amo mucho, Lilian. 💛</p>
+        <div class="rosas" id="rosas">
+            <img src="https://www.pngall.com/wp-content/uploads/2016/07/Yellow-Rose-PNG-Image.png" alt="Rosa amarilla">
+            <img src="https://www.pngall.com/wp-content/uploads/2016/07/Yellow-Rose-PNG-Image.png" alt="Rosa amarilla">
+            <img src="https://www.pngall.com/wp-content/uploads/2016/07/Yellow-Rose-PNG-Image.png" alt="Rosa amarilla">
+        </div>
+    </div>
+
+    <script>
+        function mostrarMensaje() {
+            document.getElementById('portada').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('portada').style.display = 'none';
+                document.getElementById('mensaje').style.opacity = '1';
+                setTimeout(() => {
+                    document.getElementById('rosas').style.opacity = '1';
+                }, 2000);
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
